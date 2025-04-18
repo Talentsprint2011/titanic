@@ -1,0 +1,31 @@
+{
+    "family": "faragte-task",
+    "containerDefinitions": [
+        {
+            "name": "titanic",
+            "image": "842676014628.dkr.ecr.ap-south-1.amazonaws.com/titanic:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "containerPort": 8001,
+                    "hostPort": 8001,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "systemControls": []
+        }
+    ],
+    "executionRoleArn": "arn:aws:iam::842676014628:role/titanic_ecs",
+    "networkMode": "awsvpc",
+    "volumes": [],
+    "placementConstraints": [],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "3072"
+}
