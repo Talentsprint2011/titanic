@@ -21,10 +21,10 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Python 3.10
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
@@ -32,12 +32,12 @@ jobs:
         run: pip install -r requirements/requirements.txt
 
       - name: Train and save pipeline
-        run: python bikeshare_model/train_pipeline.py
+        run: python titanic_model/train_pipeline.py
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: my-trained-pipeline
-          path: bikeshare_model/trained_models
+          path: titanic_model/trained_models
           retention-days: 1
 
   test:
@@ -46,17 +46,17 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Python 3.10
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: my-trained-pipeline
-          path: bikeshare_model/trained_models
+          path: titanic_model/trained_models
 
       - name: Install dependencies
         run: pip install -r requirements/test_requirements.txt
@@ -70,17 +70,17 @@ jobs:
     strategy:
       fail-fast: false
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Python 3.10
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: my-trained-pipeline
-          path: bikeshare_model/trained_models
+          path: titanic_model/trained_models
 
       - name: Install dependencies
         run: pip install --upgrade build
@@ -88,7 +88,7 @@ jobs:
       - name: Build package
         run: python -m build
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: my-build-package
           path: dist/*.whl
@@ -101,12 +101,12 @@ jobs:
     environment: production
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - uses: actions/download-artifact@v3
         with:
           name: my-build-package
-          path: bikeshare_model_api
+          path: titanic_model_api
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
