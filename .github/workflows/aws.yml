@@ -10,7 +10,7 @@ env:
   ECS_SERVICE: my-service
   ECS_CLUSTER: titanic
   ECS_TASK_DEFINITION: faragte-task.json
-  CONTAINER_NAME: titanic-app
+  CONTAINER_NAME: titanic
 
 permissions:
   contents: read
