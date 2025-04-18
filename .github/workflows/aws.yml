@@ -98,7 +98,7 @@ jobs:
     needs: [train, test, build]
     name: Deploy
     runs-on: ubuntu-latest
-    environment: production
+    environment: AWS
     steps:
       - name: Checkout
         uses: actions/checkout@v4
